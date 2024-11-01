@@ -1056,44 +1056,37 @@ select {
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 @font-face {
-    font-family: 'Helvetica Regular';
-    src:  url('/fonts/helvetica-regular-webfont.woff2') format('woff2'),
-          url('/fonts/helvetica-regular-webfont.woff') format('woff');
+  font-family: "Helvetica Regular";
+  src: url(/fonts/helvetica-regular-webfont.woff2?8a443b64e902ab673adf4d3b35f5c73c) format("woff2"), url(/fonts/helvetica-regular-webfont.woff?0415c15a1e62be1814ac31c5256731a3) format("woff");
 }
-
 @font-face {
-    font-family: 'Helvetica Pixel';
-    src:  url('/fonts/helvetica-pixel-webfont.woff2') format('woff2'),
-          url('/fonts/helvetica-pixel-webfont.woff') format('woff');
+  font-family: "Helvetica Pixel";
+  src: url(/fonts/helvetica-pixel-webfont.woff2?b249c11fafe140a72a77ad70f96a5784) format("woff2"), url(/fonts/helvetica-pixel-webfont.woff?aeb7f31ed70bf69b8d684d65524bb665) format("woff");
 }
-
 @font-face {
-    font-family: 'Helvetica Extended';
-    src:  url('/fonts/helvetica-extended-webfont.woff2') format('woff2'),
-          url('/fonts/helvetica-extended-webfont.woff') format('woff');
+  font-family: "Helvetica Extended";
+  src: url(/fonts/helvetica-extended-webfont.woff2?f1db9780917083a216abc63324fbe973) format("woff2"), url(/fonts/helvetica-extended-webfont.woff?3873e651bc175dc65e4ff71d8b40c9ba) format("woff");
 }
-
 .helvetica-regular {
-    font-family: 'Helvetica Regular', sans-serif;
+  font-family: "Helvetica Regular", sans-serif;
 }
 
 .helvetica-pixel {
-    font-family: 'Helvetica Pixel', sans-serif;
+  font-family: "Helvetica Pixel", sans-serif;
 }
 
 .helvetica-extended {
-    font-family: 'Helvetica Extended', sans-serif;
+  font-family: "Helvetica Extended", sans-serif;
 }
 
-h1,h2,h3,h4,h5,h6 {
-    font-family: 'Helvetica Extended', sans-serif;
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Helvetica Extended", sans-serif;
 }
 
 body {
-    background-color: #fffff4;
-    font-family: 'Helvetica Regular', sans-serif;
+  background-color: #fffff4;
+  font-family: "Helvetica Regular", sans-serif;
 }
 
 .placeholder\:text-transparent::-moz-placeholder {
@@ -1439,4 +1432,3 @@ body {
 .\[\&\:not\(\:placeholder-shown\)\]\:pt-6:not(:placeholder-shown) {
   padding-top: 1.5rem;
 }
-

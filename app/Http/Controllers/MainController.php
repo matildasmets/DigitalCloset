@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 class MainController extends Controller
 {
-    public function getHome()
+    public function getSignin()
     {
-        return view('home');
+        return view('signin');
+    }
+
+    public function getSignup()
+    {
+        return view('signup');
     }
 }

@@ -22,7 +22,8 @@
                 </div>
 
                 <div>
-                    <form id="form">
+                    <form id="form" method="POST">
+                        @csrf
                         <div class="lg:max-w-lg lg:mx-auto lg:me-0 ms-auto">
                             <div class="p-4 sm:p-7 flex flex-col border border-gray-200 shadow-lg">
                                 <div class="text-center">
@@ -41,7 +42,7 @@
                                     <div class="grid grid-cols-2 gap-4">
                                         <div>
                                             <div class="relative">
-                                                <input type="text" id="hs-hero-signup-form-floating-input-first-name"
+                                                <input type="text" name="first_name" id="hs-hero-signup-form-floating-input-first-name"
                                                     class="bg-transparent peer p-4 block w-full border-gray-900 text-sm placeholder:text-transparent focus:border-black focus:ring-black disabled:opacity-50 disabled:pointer-events-none
                             focus:pt-6
                             focus:pb-2
@@ -61,12 +62,15 @@
                             peer-[:not(:placeholder-shown)]:-translate-y-1.5
                             peer-[:not(:placeholder-shown)]:text-gray-400">First
                                                     name</label>
+                                                    @error('first_name')
+                                                        <span class="text-red-500">{{ $message }}</span>
+                                                    @enderror
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="relative">
-                                                <input type="text" id="hs-hero-signup-form-floating-input-last-name"
+                                                <input type="text" name="last_name" id="hs-hero-signup-form-floating-input-last-name"
                                                     class="bg-transparent peer p-4 block w-full border-gray-900 text-sm placeholder:text-transparent focus:border-black focus:ring-black disabled:opacity-50 disabled:pointer-events-none
                             focus:pt-6
                             focus:pb-2
@@ -86,12 +90,15 @@
                             peer-[:not(:placeholder-shown)]:-translate-y-1.5
                             peer-[:not(:placeholder-shown)]:text-gray-400">Last
                                                     name</label>
+                                                    @error('last_name')
+                                                        <span class="text-red-500">{{ $message }}</span>
+                                                    @enderror
                                             </div>
                                         </div>
 
                                         <div class="relative col-span-full">
                                             <div class="relative">
-                                                <input type="email" id="hs-hero-signup-form-floating-input-email"
+                                                <input type="email" name="email" id="hs-hero-signup-form-floating-input-email"
                                                     class="bg-transparent peer p-4 block w-full border-gray-900 text-sm placeholder:text-transparent focus:border-black focus:ring-black disabled:opacity-50 disabled:pointer-events-none
                             focus:pt-6
                             focus:pb-2
@@ -110,13 +117,16 @@
                             peer-[:not(:placeholder-shown)]:translate-x-0.5
                             peer-[:not(:placeholder-shown)]:-translate-y-1.5
                             peer-[:not(:placeholder-shown)]:text-gray-400">Email</label>
+                                                    @error('email')
+                                                        <span class="text-red-500">{{ $message }}</span>
+                                                    @enderror
                                             </div>
                                         </div>
 
 
                                         <div class="relative col-span-full">
                                             <div class="relative">
-                                                <input type="password"
+                                                <input type="password" name="password"
                                                     id="hs-hero-signup-form-floating-input-new-password"
                                                     class="bg-transparent peer p-4 block w-full border-gray-900 text-sm placeholder:text-transparent focus:border-black focus:ring-black disabled:opacity-50 disabled:pointer-events-none
                             focus:pt-6
@@ -135,8 +145,10 @@
                             peer-[:not(:placeholder-shown)]:scale-90
                             peer-[:not(:placeholder-shown)]:translate-x-0.5
                             peer-[:not(:placeholder-shown)]:-translate-y-1.5
-                            peer-[:not(:placeholder-shown)]:text-gray-400">New
-                                                    password</label>
+                            peer-[:not(:placeholder-shown)]:text-gray-400">Password</label>
+                                                    @error('password')
+                                                        <span class="text-red-500">{{ $message }}</span>
+                                                    @enderror
                                             </div>
 
                                             <div id="hs-strong-password-popover"
@@ -277,7 +289,7 @@
 
                                         <div class="col-span-full">
                                             <div class="relative">
-                                                <input type="password"
+                                                <input type="password" name="repeat_password"
                                                     id="hs-hero-signup-form-floating-input-current-password"
                                                     class="bg-transparent peer p-4 block w-full border-gray-900 text-sm placeholder:text-transparent focus:border-black focus:ring-black disabled:opacity-50 disabled:pointer-events-none
                             focus:pt-6
@@ -296,8 +308,10 @@
                             peer-[:not(:placeholder-shown)]:scale-90
                             peer-[:not(:placeholder-shown)]:translate-x-0.5
                             peer-[:not(:placeholder-shown)]:-translate-y-1.5
-                            peer-[:not(:placeholder-shown)]:text-gray-400">Current
-                                                    password</label>
+                            peer-[:not(:placeholder-shown)]:text-gray-400">Repeat password</label>
+                                                    @error('repeat_password')
+                                                        <span class="text-red-500">{{ $message }}</span>
+                                                    @enderror
                                             </div>
                                         </div>
                                     </div>

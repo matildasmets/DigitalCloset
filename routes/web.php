@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\LoginController;
 
-Route::get('/', [MainController::class, 'getSignin'])->name('signin');
-Route::get('/signup', [MainController::class, 'getSignup'])->name('signup');
+Route::view('/', 'signin');
+Route::view('/signup', 'signup');
+Route::post('/', [LoginController::class, 'signin']);
+Route::post('/signup', [LoginController::class, 'signup']);

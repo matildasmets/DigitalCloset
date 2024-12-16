@@ -22,7 +22,8 @@
                 </div>
 
                 <div>
-                    <form id="form">
+                    <form id="form" method="POST" action="{{ route('signin') }}">
+                        @csrf
                         <div class="lg:max-w-lg lg:mx-auto lg:me-0 ms-auto">
                             <div class="p-4 sm:p-7 flex flex-col border border-gray-200 shadow-lg">
                                 <div class="text-center">
@@ -40,7 +41,7 @@
                                     <div class="grid grid-cols-2 gap-4">
                                         <div class="relative col-span-full">
                                             <div class="relative">
-                                                <input type="email" id="hs-hero-signup-form-floating-input-email"
+                                                <input type="email" name="email" id="hs-hero-signup-form-floating-input-email"
                                                     class="bg-transparent peer p-4 block w-full border-gray-900 text-sm placeholder:text-transparent focus:border-black focus:ring-black disabled:opacity-50 disabled:pointer-events-none
                                focus:pt-6
                                focus:pb-2
@@ -64,7 +65,7 @@
 
                                         <div class="col-span-full">
                                             <div class="relative">
-                                                <input type="password"
+                                                <input type="password" name="password"
                                                     id="hs-hero-signup-form-floating-input-current-password"
                                                     class="bg-transparent peer p-4 block w-full border-gray-900 text-sm placeholder:text-transparent focus:border-black focus:ring-black disabled:opacity-50 disabled:pointer-events-none
                                focus:pt-6

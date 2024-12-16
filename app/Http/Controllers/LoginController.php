@@ -8,22 +8,6 @@ use App\Models\User;
 
 class LoginController extends Controller
 {
-
-    public function messages()
-    {
-        return [
-            'email.required' => 'The email field is required.',
-            'email.email' => 'The email must be a valid email address.',
-            'password.required' => 'The password field is required.',
-            'password.min' => 'The password must be at least 8 characters.',
-            'first_name.required' => 'The first name field is required.',
-            'last_name.required' => 'The last name field is required.',
-            'email.unique' => 'The email has already been taken.',
-            'password.regex' => 'The password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character.',
-            'repeat_password.same' => 'The repeat password and password must match.',
-        ];
-    }
-
     public function signin(Request $request)
     {
         $credentials = $request->validate([
@@ -54,6 +38,16 @@ class LoginController extends Controller
                 'regex:/[@$!%*?&#]/'  // must contain a special character
             ],
             'repeat_password' => 'required|same:password'
+        ], [
+            'first_name.required' => 'The first name is required.',
+            'last_name.required' => 'The last name is required.',
+            'email.required' => 'The email is required.',
+            'email.email' => 'The email must be a valid email address.',
+            'email.unique' => 'The email has already been taken.',
+            'password.required' => 'The password is required.',
+            'password.regex' => 'The password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character.',
+            'repeat_password.required' => 'The password confirmation is required.',
+            'repeat_password.same' => 'The password confirmation does not match the password.',
         ]);
 
         $user = User::create($credentials);

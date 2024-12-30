@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name'); // Name of photo
             $table->string('photo'); // Path to photo
             $table->enum('type', ['top', 'pants', 'shoes', 'jacket', 'accessory']);
+            $table->timestamps();
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('clothing');
     }
 };

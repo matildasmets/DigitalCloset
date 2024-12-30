@@ -12,9 +12,12 @@
 
             <p class="mb-3">Hi {{ session('first_name') }} {{ session('last_name') }} 👋 What would you like to do?</p>
             <div class="gap-y-3">
-                <p class="transition-all hover:ms-2 flex items-center"><a href=""
+                <p class="transition-all hover:ms-2 flex items-center"><a href="/put-outfit-together"
                         class="text-2xl font-bold helvetica-extended flex items-center"><x-fas-arrow-right
                             class="w-6 h-6 text-black mr-2" /> Put an outfit together</a></p>
+                <p class="transition-all hover:ms-2 flex items-center"><a href="/random"
+                        class="text-2xl font-bold helvetica-extended flex items-center"><x-fas-arrow-right
+                            class="w-6 h-6 text-black mr-2" /> Fetch a random outfit</a></p>
                 <p class="transition-all hover:ms-2 flex items-center"><a href="/closet"
                         class="text-2xl font-bold helvetica-extended flex items-center"><x-fas-arrow-right
                             class="w-6 h-6 text-black mr-2" /> View my closet</a></p>
@@ -25,19 +28,21 @@
                         item</a></p>
             </div>
 
-            <h2 class="mt-3 text-3xl helvetica-pixel">Recent item uploads</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
-                @foreach ($clothing as $item)
-                    <div class="relative group">
-                        <img src="{{ asset('storage/' . $item->photo) }}" alt="{{ $item->name }}"
-                            class="w-full h-auto object-cover group-hover:brightness-75">
-                        <div
-                            class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-lg font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                            {{ $item->name }}
+            @if(isset($clothing))
+                <h2 class="mt-3 text-3xl helvetica-pixel">Recent item uploads</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+                    @foreach ($clothing as $item)
+                        <div class="relative group">
+                            <img src="{{ asset('storage/' . $item->photo) }}" alt="{{ $item->name }}"
+                                class="w-full h-auto object-cover group-hover:brightness-75">
+                            <div
+                                class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity">
+                                {{ $item->name }}
+                            </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 
@@ -136,7 +141,8 @@
                                 class="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-neutral-400 focus:outline-none dark:bg-neutral-800 dark:border-neutral-700 dark:placeholder-gray-400"
                                 aria-describedby="file_input_help" id="file_input" type="file"
                                 accept=".jpeg,.png,.jpg">
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPEG, JPG or PNG.</p>
+                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPEG, JPG or
+                                PNG.</p>
                         </div>
                     </form>
                 </div>
@@ -197,7 +203,8 @@
                                 class="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-neutral-400 focus:outline-none dark:bg-neutral-800 dark:border-neutral-700 dark:placeholder-gray-400"
                                 aria-describedby="file_input_help" id="file_input" type="file"
                                 accept=".jpeg,.png,.jpg">
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPEG, JPG or PNG.</p>
+                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPEG, JPG or
+                                PNG.</p>
                         </div>
                     </form>
                 </div>
@@ -258,7 +265,8 @@
                                 class="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-neutral-400 focus:outline-none dark:bg-neutral-800 dark:border-neutral-700 dark:placeholder-gray-400"
                                 aria-describedby="file_input_help" id="file_input" type="file"
                                 accept=".jpeg,.png,.jpg">
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPEG, JPG or PNG.</p>
+                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPEG, JPG or
+                                PNG.</p>
                         </div>
                     </form>
                 </div>
@@ -319,7 +327,8 @@
                                 class="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-neutral-400 focus:outline-none dark:bg-neutral-800 dark:border-neutral-700 dark:placeholder-gray-400"
                                 aria-describedby="file_input_help" id="file_input" type="file"
                                 accept=".jpeg,.png,.jpg">
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPEG, JPG or PNG.</p>
+                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPEG, JPG or
+                                PNG.</p>
                         </div>
                     </form>
                 </div>
@@ -380,7 +389,8 @@
                                 class="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-neutral-400 focus:outline-none dark:bg-neutral-800 dark:border-neutral-700 dark:placeholder-gray-400"
                                 aria-describedby="file_input_help" id="file_input" type="file"
                                 accept=".jpeg,.png,.jpg">
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPEG, JPG or PNG.</p>
+                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPEG, JPG or
+                                PNG.</p>
                         </div>
                     </form>
                 </div>

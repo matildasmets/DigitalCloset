@@ -11,7 +11,7 @@
     <header class="flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full">
         <nav class="relative max-w-[66rem] w-full md:flex md:items-center md:justify-between md:gap-3 mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div class="flex items-center justify-between">
-            <a class="flex-none font-semibold text-3xl text-black focus:outline-none focus:opacity-80 helvetica-extended uppercase" href="#" aria-label="Brand">Digital Closet</a>
+            <a class="flex-none font-semibold text-3xl text-black focus:outline-none focus:opacity-80 helvetica-extended uppercase" href="/" aria-label="Brand">Digital Closet</a>
 
             <div class="md:hidden">
               <button type="button" class="hs-collapse-toggle relative size-9 flex justify-center items-center text-sm font-semibold text-black focus:outline-none disabled:opacity-50 disabled:pointer-events-none" id="hs-base-header-collapse" aria-expanded="false" aria-controls="hs-base-header" aria-label="Toggle navigation" data-hs-collapse="#hs-base-header">

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->string('name'); // Name of photo
+            $table->string('photo'); // Path to photo
             $table->enum('type', ['top', 'pants', 'shoes', 'jacket', 'accessory']);
         });
     }

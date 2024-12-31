@@ -14,6 +14,12 @@ class MainController extends Controller
         return view('dashboard', ['clothing' => $clothing]);
     }
 
+    public function closet()
+    {
+        $clothing = Clothing::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->get();
+        return view('closet', ['clothing' => $clothing]);
+    }
+
     public function random()
     {
         $userId = Auth::id();

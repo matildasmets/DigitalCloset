@@ -12,7 +12,9 @@ Route::post('/signup', [LoginController::class, 'signup'])->name('signup');
 
 Route::middleware([Authentication::class])->group(function () {
     Route::get('/dashboard', [MainController::class, 'index'])->name('dashboard');
+    Route::get('/closet', [MainController::class, 'closet'])->name('closet');
     Route::get('/random', [MainController::class, 'random'])->name('random');
+    Route::view('/put-outfit-together', 'put-outfit-together'); 
     Route::post('/dashboard/add/top', [MainController::class, 'addTop'])->name('addTop');
     Route::post('/dashboard/add/pants', [MainController::class, 'addPants'])->name('addPants');
     Route::post('/dashboard/add/shoes', [MainController::class, 'addShoes'])->name('addShoes');

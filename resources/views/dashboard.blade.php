@@ -28,13 +28,13 @@
                         item</a></p>
             </div>
 
-            @if(isset($clothing))
+            @if(!$clothing->isEmpty())
                 <h2 class="mt-3 text-3xl helvetica-pixel">Recent item uploads</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
                     @foreach ($clothing as $item)
                         <div class="relative group">
                             <img src="{{ asset('storage/' . $item->photo) }}" alt="{{ $item->name }}"
-                                class="w-full h-auto object-cover group-hover:brightness-75">
+                                class="w-full h-auto object-cover group-hover:brightness-75" loading="lazy">
                             <div
                                 class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity">
                                 {{ $item->name }}

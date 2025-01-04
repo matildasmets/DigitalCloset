@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clothing', function (Blueprint $table) {
+        Schema::create('outfits', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
             $table->string('name');
-            $table->string('photo');
-            $table->enum('type', ['top', 'pants', 'shoes', 'jacket', 'accessory']);
+            $table->enum('type', ['casual', 'formal', 'party', 'work', 'sport', 'other']);
+            $table->string('top');
+            $table->string('pants');
+            $table->string('shoes');
+            $table->string('jacket')->nullable();
+            $table->string('accessories')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clothing');
+        Schema::dropIfExists('outfits');
     }
 };

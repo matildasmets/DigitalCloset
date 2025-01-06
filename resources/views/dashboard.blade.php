@@ -124,8 +124,7 @@
                     </button>
                 </div>
                 <div class="p-4 overflow-y-auto">
-                    <form action="/dashboard/put-outfit-together" method="POST" id="hs-put-outfit-together-form"
-                        enctype="multipart/form-data">
+                    <form action="/dashboard/put-outfit-together" method="POST" id="hs-put-outfit-together-form">
                         @csrf
                         <div class="mb-4">
                             <label for="name"

@@ -7,17 +7,17 @@ use App\Http\Controllers\LoginController;
 
 Route::view('/', 'signin');
 Route::view('/signup', 'signup');
-Route::post('/', [LoginController::class, 'signin'])->name('signin');
-Route::post('/signup', [LoginController::class, 'signup'])->name('signup');
+Route::post('/', [LoginController::class, 'signin']);
+Route::post('/signup', [LoginController::class, 'signup']);
 
 Route::middleware([Authentication::class])->group(function () {
-    Route::get('/dashboard', [MainController::class, 'index'])->name('dashboard');
-    Route::get('/closet', [MainController::class, 'closet'])->name('closet');
-    Route::get('/random', [MainController::class, 'random'])->name('random');
-    Route::view('/put-outfit-together', 'put-outfit-together'); 
-    Route::post('/dashboard/add/top', [MainController::class, 'addTop'])->name('addTop');
-    Route::post('/dashboard/add/pants', [MainController::class, 'addPants'])->name('addPants');
-    Route::post('/dashboard/add/shoes', [MainController::class, 'addShoes'])->name('addShoes');
-    Route::post('/dashboard/add/jacket', [MainController::class, 'addJacket'])->name('addJacket');
-    Route::post('/dashboard/add/accessory', [MainController::class, 'addAccessory'])->name('addAccessory');
+    Route::get('/dashboard', [MainController::class, 'index']);
+    Route::get('/closet', [MainController::class, 'closet']);
+    Route::get('/random', [MainController::class, 'random']);
+    Route::post('/dashboard/put-outfit-together', [MainController::class, 'create']);
+    Route::post('/dashboard/add/top', [MainController::class, 'addTop']);
+    Route::post('/dashboard/add/pants', [MainController::class, 'addPants']);
+    Route::post('/dashboard/add/shoes', [MainController::class, 'addShoes']);
+    Route::post('/dashboard/add/jacket', [MainController::class, 'addJacket']);
+    Route::post('/dashboard/add/accessory', [MainController::class, 'addAccessory']);
 });

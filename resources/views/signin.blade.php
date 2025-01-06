@@ -22,7 +22,7 @@
                 </div>
 
                 <div>
-                    <form id="form" method="POST" action="{{ route('signin') }}">
+                    <form id="form" method="POST" action="/">
                         @csrf
                         <div class="lg:max-w-lg lg:mx-auto lg:me-0 ms-auto">
                             <div class="p-4 sm:p-7 flex flex-col border border-gray-200 shadow-lg">

@@ -16,7 +16,7 @@
 
             @if ($top || $pants || $shoes || $jacket || $accessory)
                 <p class="mb-5">Here's what you could possibly wear:</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
                     @if ($top)
                         <div class="bg-neutral-800 shadow-md overflow-hidden">
                             <img src="{{ asset('storage/' . $top->photo) }}" alt="{{ $top->name }}"

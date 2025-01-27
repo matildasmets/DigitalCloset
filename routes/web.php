@@ -5,11 +5,16 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\OutfitController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SessionController;
+use App\Http\Middleware\Guest;
 
-Route::view('/', 'signin');
-Route::view('/signup', 'signup');
-Route::post('/', [SessionController::class, 'signin']);
-Route::post('/signup', [RegistrationController::class, 'signup']);
+Route::middleware([Guest::class])->group(function () {
+    Route::view('/', 'signin');
+    Route::view('/signup', 'signup');
+    Route::post('/', [SessionController::class, 'store']);
+    Route::post('/signup', [RegistrationController::class, 'store']);
+});
+
+Route::post('/logout', [SessionController::class, 'destroy']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [MainController::class, 'index']);

@@ -9,7 +9,7 @@ use App\Models\User;
 
 class RegistrationController extends Controller
 {
-    public function signup(Request $request)
+    public function store(Request $request)
     {
         $attributes = $request->validate([
             'first_name' => 'required',
@@ -47,6 +47,6 @@ class RegistrationController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended('dashboard');
+        return redirect('/dashboard');
     }
 }

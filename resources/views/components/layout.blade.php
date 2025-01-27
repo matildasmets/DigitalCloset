@@ -27,9 +27,10 @@
             <div id="hs-base-header" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block" aria-labelledby="hs-base-header-collapse">
                 <div class="overflow-hidden overflow-y-auto max-h-[75vh] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
                     <div class="py-2 md:py-0 flex flex-col md:flex-row md:items-center md:justify-end gap-0.5 md:gap-1">
-                        <a href="/logout" class="helvetica-pixel text-3xl p-2 flex items-center text-black focus:outline-none focus:text-black hover:" href="#" aria-current="page">
-                            Logout
-                        </a>
+                        <form method="POST" action="/logout" class="d-inline">
+                            @csrf
+                            <button type="submit" class="helvetica-pixel text-3xl p-2 flex items-center text-black focus:outline-none focus:text-black">Logout</button>
+                        </form>
                     </div>
                 </div>
             </div>

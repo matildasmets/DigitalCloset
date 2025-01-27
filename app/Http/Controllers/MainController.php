@@ -77,7 +77,7 @@ class MainController extends Controller
 
         $clothing->save();
 
-        return redirect()->url('/dashboard')->with('success', 'Top added successfully!');
+        return redirect('/dashboard')->with('success', 'Top added successfully!');
     }
 
     public function addPants(Request $request)
@@ -104,7 +104,7 @@ class MainController extends Controller
 
         $clothing->save();
 
-        return redirect()->url('/dashboard')->with('success', 'Pants added successfully!');
+        return redirect('/dashboard')->with('success', 'Pants added successfully!');
     }
 
     public function addShoes(Request $request)
@@ -131,7 +131,7 @@ class MainController extends Controller
 
         $clothing->save();
 
-        return redirect()->url('/dashboard')->with('success', 'Shoes added successfully!');
+        return redirect('/dashboard')->with('success', 'Shoes added successfully!');
     }
 
     public function addJacket(Request $request)
@@ -158,7 +158,7 @@ class MainController extends Controller
 
         $clothing->save();
 
-        return redirect()->url('/dashboard')->with('success', 'Jacket added successfully!');
+        return redirect('/dashboard')->with('success', 'Jacket added successfully!');
     }
 
     public function addAccessory(Request $request)
@@ -185,6 +185,6 @@ class MainController extends Controller
 
         $clothing->save();
 
-        return redirect()->url('/dashboard')->with('success', 'Accessory added successfully!');
+        return redirect('/dashboard')->with('success', 'Accessory added successfully!');
     }
 }

@@ -28,7 +28,7 @@
                     @endforeach
                 </div>
             @else
-                <p class="text-gray-600">No items found</p>
+                <p class="text-lg">Your closet seems to be empty... try adding some items!</p>
             @endif
         </div>
 </x-layout>

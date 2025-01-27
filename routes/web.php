@@ -3,12 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Authentication;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SessionController;
 
 Route::view('/', 'signin');
 Route::view('/signup', 'signup');
-Route::post('/', [LoginController::class, 'signin']);
-Route::post('/signup', [LoginController::class, 'signup']);
+Route::post('/', [SessionController::class, 'signin']);
+Route::post('/signup', [SessionController::class, 'signup']);
 
 Route::middleware([Authentication::class])->group(function () {
     Route::get('/dashboard', [MainController::class, 'index']);

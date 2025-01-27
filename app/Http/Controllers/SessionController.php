@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
-class LoginController extends Controller
+class SessionController extends Controller
 {
     public function signin(Request $request)
     {
@@ -18,7 +18,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            $user = Auth::user(); // Get the authenticated user
+            $user = Auth::user();
             $request->session()->put('user_id', $user->id);
             $request->session()->put('first_name', $user->first_name);
             $request->session()->put('last_name', $user->last_name);
@@ -42,10 +42,10 @@ class LoginController extends Controller
                 'required',
                 'string',
                 'min:6',
-                'regex:/[a-z]/',      // must contain at least one lowercase letter
-                'regex:/[A-Z]/',      // must contain at least one uppercase letter
-                'regex:/[0-9]/',      // must contain at least one digit
-                'regex:/[@$!%*?&#]/'  // must contain a special character
+                'regex:/[a-z]/',
+                'regex:/[A-Z]/',
+                'regex:/[0-9]/',
+                'regex:/[@$!%*?&#]/'
             ],
             'repeat_password' => 'required|same:password'
         ], [

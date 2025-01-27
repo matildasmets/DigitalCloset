@@ -1,4 +1,5 @@
 # Digital Closet
+Een digitale kledingkast met Docker en FrankenPHP.
 
 ## Installatie
 

@@ -12,7 +12,7 @@
 1. **Clone de repository**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/matildasmets/DigitalCloset.git
    cd DigitalCloset
     ```
 2. **Installeer afhankelijkheden**

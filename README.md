@@ -1,12 +1,10 @@
 # Digital Closet
-Een digitale kledingkast met Docker en FrankenPHP.
 
 ## Installatie
 
 ### Vereisten
 
 - [Docker](https://www.docker.com/) geïnstalleerd op je computer
-- [Laravel Sail](https://laravel.com/docs/11.x/sail)
 
 ### Stappen
 
@@ -17,6 +15,9 @@ Een digitale kledingkast met Docker en FrankenPHP.
    cd DigitalCloset
     ```
 2. **Installeer afhankelijkheden**
+    ```
+    docker run --rm -v $(pwd):/app composer require laravel/sail --dev
+    ``
 
    ```bash
    ./vendor/bin/sail up --build

@@ -15,9 +15,9 @@
    cd DigitalCloset
     ```
 2. **Installeer afhankelijkheden**
-    ```
+    ```bash
     docker run --rm -v $(pwd):/app composer require laravel/sail --dev
-    ``
+    ```
 
    ```bash
    ./vendor/bin/sail up --build

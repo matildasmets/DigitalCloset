@@ -158,12 +158,14 @@ class OutfitController extends Controller
     public function addJacket(Request $request)
     {
         $attributes = $request->validate([
-            'jacket' => 'required',
+            'jacket' => 'nullable',
         ]);
 
         try {
             $outfit = Session::get('outfit', []);
-            $outfit['jacket'] = $attributes['jacket'];
+            if (!empty($attributes['jacket'])) {
+                $outfit['jacket'] = $attributes['jacket'];
+            }
             Session::put('outfit', $outfit);
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'Something went wrong while adding the jacket.']);
@@ -175,12 +177,14 @@ class OutfitController extends Controller
     public function addAccessory(Request $request)
     {
         $attributes = $request->validate([
-            'accessory' => 'required',
+            'accessory' => 'nullable',
         ]);
 
         try {
             $outfit = Session::get('outfit', []);
-            $outfit['accessory'] = $attributes['accessory'];
+            if (!empty($attributes['accessory'])) {
+                $outfit['accessory'] = $attributes['accessory'];
+            }
             Session::put('outfit', $outfit);
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'Something went wrong while adding the accessory.']);
@@ -188,6 +192,7 @@ class OutfitController extends Controller
 
         return redirect('/put-outfit-together/preview');
     }
+
     public function store()
     {
         $outfit = Session::get('outfit', []);
@@ -210,8 +215,8 @@ class OutfitController extends Controller
             $newOutfit->top = $items[$outfit['top']]->photo ?? null;
             $newOutfit->pants = $items[$outfit['pants']]->photo ?? null;
             $newOutfit->shoes = $items[$outfit['shoes']]->photo ?? null;
-            $newOutfit->jacket = isset($outfit['jacket']) ? $items[$outfit['jacket']]->photo : null;
-            $newOutfit->accessories = isset($outfit['accessory']) ? $items[$outfit['accessory']]->photo : null;
+            $newOutfit->jacket = isset($outfit['jacket']) ? ($items[$outfit['jacket']]->photo ?? null) : null;
+            $newOutfit->accessories = isset($outfit['accessory']) ? ($items[$outfit['accessory']]->photo ?? null) : null;
 
             $newOutfit->save();
         } catch(\Exception $e) {

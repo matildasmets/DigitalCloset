@@ -12,7 +12,7 @@
 
     <div class="relative max-w-[66rem] w-full mx-auto px-4 sm:px-6 lg:px-8 py-2">
         <div class="relative">
-            <h1 class="text-lg mb-3">Choose a top</h1>
+            <h1 class="text-lg mb-3">Choose a jacket</h1>
 
             @if (session('success'))
                 <div class="mb-4 text-green-600">
@@ -20,32 +20,32 @@
                 </div>
             @endif
 
-            @error('top')
+            @error('jacket')
                 <div class="mb-4 text-red-600">
                     {{ $message }}
                 </div>
             @enderror
 
-            <form action="/put-outfit-together/add/top" method="POST">
+            <form action="/put-outfit-together/add/jacket" method="POST">
                 @csrf
 
                 <div class="swiper-container mb-5">
                     <div class="swiper-wrapper">
-                        @foreach ($tops as $top)
+                        @foreach ($jackets as $jacket)
                             <div class="swiper-slide">
-                                <label for="{{ $top->id }}"
+                                <label for="{{ $jacket->id }}"
                                     class="cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
-                                    <img src="{{ asset('storage/' . $top->photo) }}" alt="{{ $top->name }}"
+                                    <img src="{{ asset('storage/' . $jacket->photo) }}" alt="{{ $jacket->name }}"
                                         class="w-full aspect-square object-cover bg-white" />
                                     <div class="p-4 flex-grow flex flex-col">
                                         <div class="flex justify-between items-center">
                                             <div>
                                                 <h3
                                                     class="text-xs line-clamp-1 overflow-hidden text-white font-semibold">
-                                                    {{ $top->name }}</h3>
+                                                    {{ $jacket->name }}</h3>
                                             </div>
-                                            <input type="radio" name="top" value="{{ $top->id }}"
-                                                id="{{ $top->id }}" class="size-5 border-gray-300 text-blue-500" />
+                                            <input type="radio" name="jacket" value="{{ $jacket->id }}"
+                                                id="{{ $jacket->id }}" class="size-5 border-gray-300 text-blue-500" />
                                         </div>
                                     </div>
                                 </label>

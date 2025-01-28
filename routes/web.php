@@ -33,12 +33,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/put-outfit-together/shoes', [OutfitController::class, 'shoes']);
         Route::get('/put-outfit-together/jacket', [OutfitController::class, 'jacket']);
         Route::get('/put-outfit-together/accessory', [OutfitController::class, 'accessory']);
+        Route::get('/put-outfit-together/preview', [OutfitController::class, 'preview']);
 
         Route::post('/put-outfit-together/add/top', [OutfitController::class, 'addTop']);
         Route::post('/put-outfit-together/add/pants', [OutfitController::class, 'addPants']);
         Route::post('/put-outfit-together/add/shoes', [OutfitController::class, 'addShoes']);
         Route::post('/put-outfit-together/add/jacket', [OutfitController::class, 'addJacket']);
         Route::post('/put-outfit-together/add/accessory', [OutfitController::class, 'addAccessory']);
+        Route::post('/put-outfit-together/save', [OutfitController::class, 'store']);
     });
 
     Route::post('/dashboard/add/top', [ClothingController::class, 'addTop']);

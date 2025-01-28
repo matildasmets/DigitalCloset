@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Models\Clothing;
+use App\Models\Outfit;
 
 class OutfitController extends Controller
 {
@@ -41,14 +42,26 @@ class OutfitController extends Controller
 
     public function jacket()
     {
-        $jacket = Clothing::where('user_id', Auth::id())->where('type', 'jacket')->get();
-        return view('outfit.jacket', ['jacket' => $jacket]);
+        $jackets = Clothing::where('user_id', Auth::id())->where('type', 'jacket')->get();
+        return view('outfit.jacket', ['jackets' => $jackets]);
     }
 
     public function accessory()
     {
-        $accessory = Clothing::where('user_id', Auth::id())->where('type', 'accessory')->get();
-        return view('outfit.accessory', ['accessory' => $accessory]);
+        $accessories = Clothing::where('user_id', Auth::id())->where('type', 'accessory')->get();
+        return view('outfit.accessory', ['accessories' => $accessories]);
+    }
+
+    public function preview()
+    {
+        $outfit = Session::get('outfit', []);
+        $items = [];
+
+        foreach ($outfit as $type => $id) {
+            $items[$type] = Clothing::where('user_id', Auth::id())->find($id);
+        }
+
+        return view('outfit.preview', ['outfit' => $items]);
     }
 
     public function addTop(Request $request)
@@ -57,10 +70,110 @@ class OutfitController extends Controller
             'top' => 'required',
         ]);
 
-        $outfit = Session::get('outfit', []);
-        $outfit['top'] = $attributes['top'];
-        Session::put('outfit', $outfit);
+        try {
+            $outfit = Session::get('outfit', []);
+            $outfit['top'] = $attributes['top'];
+            Session::put('outfit', $outfit);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Something went wrong while adding the top.']);
+        }
 
         return redirect('/put-outfit-together/pants');
+    }
+
+    public function addPants(Request $request)
+    {
+        $attributes = $request->validate([
+            'pants' => 'required',
+        ]);
+
+        try {
+            $outfit = Session::get('outfit', []);
+            $outfit['pants'] = $attributes['pants'];
+            Session::put('outfit', $outfit);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Something went wrong while adding the pants.']);
+        }
+
+        return redirect('/put-outfit-together/shoes');
+    }
+
+    public function addShoes(Request $request)
+    {
+        $attributes = $request->validate([
+            'shoes' => 'required',
+        ]);
+
+        try {
+            $outfit = Session::get('outfit', []);
+            $outfit['shoes'] = $attributes['shoes'];
+            Session::put('outfit', $outfit);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Something went wrong while adding the shoes.']);
+        }
+
+        return redirect('/put-outfit-together/jacket');
+    }
+
+    public function addJacket(Request $request)
+    {
+        $attributes = $request->validate([
+            'jacket' => 'required',
+        ]);
+
+        try {
+            $outfit = Session::get('outfit', []);
+            $outfit['jacket'] = $attributes['jacket'];
+            Session::put('outfit', $outfit);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Something went wrong while adding the jacket.']);
+        }
+
+        return redirect('/put-outfit-together/accessory');
+    }
+
+    public function addAccessory(Request $request)
+    {
+        $attributes = $request->validate([
+            'accessory' => 'required',
+        ]);
+
+        try {
+            $outfit = Session::get('outfit', []);
+            $outfit['accessory'] = $attributes['accessory'];
+            Session::put('outfit', $outfit);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Something went wrong while adding the accessory.']);
+        }
+
+        return redirect('/put-outfit-together/preview');
+    }
+    public function store()
+    {
+        $outfit = Session::get('outfit', []);
+
+        $ids = array_filter([
+            $outfit['top'] ?? null,
+            $outfit['pants'] ?? null,
+            $outfit['shoes'] ?? null,
+            $outfit['jacket'] ?? null,
+            $outfit['accessory'] ?? null,
+        ]);
+
+        $items = Clothing::whereIn('id', $ids)->get()->keyBy('id');
+
+        $newOutfit = new Outfit();
+        $newOutfit->user_id = Auth::id();
+        $newOutfit->name = $outfit['name'];
+        $newOutfit->type = $outfit['occasion'];
+        $newOutfit->top = $items[$outfit['top']]->photo ?? null;
+        $newOutfit->pants = $items[$outfit['pants']]->photo ?? null;
+        $newOutfit->shoes = $items[$outfit['shoes']]->photo ?? null;
+        $newOutfit->jacket = isset($outfit['jacket']) ? $items[$outfit['jacket']]->photo : null;
+        $newOutfit->accessories = isset($outfit['accessory']) ? $items[$outfit['accessory']]->photo : null;
+
+        $newOutfit->save();
+
+        return redirect('/dashboard')->with('success', 'Outfit added successfully!');
     }
 }

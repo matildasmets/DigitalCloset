@@ -5,7 +5,6 @@
 ### Vereisten
 
 - [Docker](https://www.docker.com/) geïnstalleerd op je computer
-- [Laravel Sail](https://laravel.com/docs/11.x/sail)
 
 ### Stappen
 
@@ -16,6 +15,9 @@
    cd DigitalCloset
     ```
 2. **Installeer afhankelijkheden**
+    ```
+    docker run --rm -v $(pwd):/app composer require laravel/sail --dev
+    ``
 
    ```bash
    ./vendor/bin/sail up --build

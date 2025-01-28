@@ -15,16 +15,21 @@
    cd DigitalCloset
     ```
 2. **Installeer afhankelijkheden**
+   MacOs/Linux:
     ```bash
     docker run --rm -v $(pwd):/app composer require laravel/sail --dev
     ```
+    Windows:
+   ```bash
+   docker run --rm -v %cd%:/app composer require laravel/sail --dev
+   ```
 
    ```bash
    ./vendor/bin/sail up --build
    ```
 3. **Creëer een .env-bestand**
    
-   Kopieer de inhoud van het bestand `.env.example` en plak deze in een nieuw bestand genaamd `.env`. Controleer en pas indien nodig de database-instellingen aan, zodat ze overeenkomen met de standaardinstellingen van Laravel Sail.
+Kopieer de inhoud van het bestand `.env.example` en plak deze in een nieuw bestand genaamd `.env`. Controleer en pas indien nodig de database-instellingen aan, zodat ze overeenkomen met de standaardinstellingen van Laravel Sail.
 4. **Genereer een applicatiesleutel**
     ```bash
     ./vendor/bin/sail artisan key:generate

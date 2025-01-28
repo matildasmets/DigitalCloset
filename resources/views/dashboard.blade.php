@@ -38,7 +38,7 @@
                                 class="w-full h-auto object-cover group-hover:brightness-75" loading="lazy">
                             <div
                                 class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity">
-                                {{ $item->name }}
+                                <h3 class="text-lg text-white">{{ $item->name }}</h3>
                             </div>
                         </div>
                     @endforeach

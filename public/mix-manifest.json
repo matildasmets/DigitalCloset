@@ -1,5 +1,7 @@
 {
     "/assets/js/main.js": "/assets/js/main.js",
+    "/assets/js/swiper.js": "/assets/js/swiper.js",
+    "/assets/css/swiper.css": "/assets/css/swiper.css",
     "/assets/css/main.css": "/assets/css/main.css",
     "/assets/fonts/helvetica-extended-webfont.woff": "/assets/fonts/helvetica-extended-webfont.woff",
     "/assets/fonts/helvetica-extended-webfont.woff2": "/assets/fonts/helvetica-extended-webfont.woff2",
@@ -7,5 +9,5 @@
     "/assets/fonts/helvetica-pixel-webfont.woff2": "/assets/fonts/helvetica-pixel-webfont.woff2",
     "/assets/fonts/helvetica-regular-webfont.woff": "/assets/fonts/helvetica-regular-webfont.woff",
     "/assets/fonts/helvetica-regular-webfont.woff2": "/assets/fonts/helvetica-regular-webfont.woff2",
-    "/js/preline.js": "/js/preline.js"
+    "/assets/js/preline.js": "/assets/js/preline.js"
 }

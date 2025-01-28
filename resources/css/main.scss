@@ -49,3 +49,12 @@ body {
 .bg-main {
     background-color: #fffff4 !important;
 }
+
+.swiper-container {
+    overflow: hidden;
+}
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}

@@ -15,20 +15,20 @@
             @endif
 
             @if (!$clothing->isEmpty())
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4 mb-5">
                     @foreach ($clothing as $item)
-                        <div class="relative group">
+                        <div class="block cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                             <img src="{{ asset('storage/' . $item->photo) }}" alt="{{ $item->name }}"
-                                class="w-full h-auto object-cover group-hover:brightness-75" loading="lazy">
-                            <div
-                                class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity">
-                                {{ $item->name }}
+                                class="w-full aspect-square bg-white object-cover object-top" loading="lazy">
+                            <div class="p-4 h-full">
+                                <h3 class="text-lg text-white font-semibold">{{ $item->name }}</h3>
+                                <p class="text-gray-300">{{ ucfirst($item->type) }}</p>
                             </div>
                         </div>
                     @endforeach
                 </div>
             @else
-                <p class="text-lg">Your closet seems to be empty... try adding some items!</p>
+                <p class="text-lg mb-5">Your closet seems to be empty... try adding some items!</p>
             @endif
         </div>
 </x-layout>

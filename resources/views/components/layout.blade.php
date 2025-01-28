@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    @stack('styles')
     <title>{{ $title ?? 'Digital Closet'}}</title>
 </head>
 <body>
@@ -51,6 +52,7 @@
 
     {{ $slot }}
 
+    @stack('scripts')
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/preline.js') }}"></script>
 </body>

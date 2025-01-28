@@ -18,9 +18,10 @@
                 <p class="mb-5">Here's what you could possibly wear:</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
                     @if ($top)
-                        <div class="block cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                        <div
+                            class="block cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                             <img src="{{ asset('storage/' . $top->photo) }}" alt="{{ $top->name }}"
-                                class="w-full h-64 object-cover object-top" loading="lazy">
+                                class="w-full aspect-square bg-white object-cover object-top" loading="lazy">
                             <div class="p-4">
                                 <h3 class="text-lg text-white font-semibold">{{ $top->name }}</h3>
                                 <p class="text-gray-300">Top</p>
@@ -29,9 +30,10 @@
                     @endif
 
                     @if ($pants)
-                        <div class="block cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                        <div
+                            class="block cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                             <img src="{{ asset('storage/' . $pants->photo) }}" alt="{{ $pants->name }}"
-                                class="w-full h-64 object-cover object-top" loading="lazy">
+                                class="w-full aspect-square bg-white object-cover object-top" loading="lazy">
                             <div class="p-4">
                                 <h3 class="text-lg text-white font-semibold">{{ $pants->name }}</h3>
                                 <p class="text-gray-300">Pants</p>
@@ -40,9 +42,10 @@
                     @endif
 
                     @if ($shoes)
-                        <div class="block cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                        <div
+                            class="block cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                             <img src="{{ asset('storage/' . $shoes->photo) }}" alt="{{ $shoes->name }}"
-                                class="w-full h-64 object-cover object-top" loading="lazy">
+                                class="w-full aspect-square bg-white object-cover object-top" loading="lazy">
                             <div class="p-4">
                                 <h3 class="text-lg text-white font-semibold">{{ $shoes->name }}</h3>
                                 <p class="text-gray-300">Shoes</p>
@@ -51,9 +54,10 @@
                     @endif
 
                     @if ($jacket)
-                        <div class="block cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                        <div
+                            class="block cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                             <img src="{{ asset('storage/' . $jacket->photo) }}" alt="{{ $jacket->name }}"
-                                class="w-full h-64 object-cover object-top" loading="lazy">
+                                class="w-full aspect-square bg-white object-cover object-top" loading="lazy">
                             <div class="p-4">
                                 <h3 class="text-lg text-white font-semibold">{{ $jacket->name }}</h3>
                                 <p class="text-gray-300">Jacket</p>
@@ -62,9 +66,10 @@
                     @endif
 
                     @if ($accessory)
-                        <div class="block cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                        <div
+                            class="block cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                             <img src="{{ asset('storage/' . $accessory->photo) }}" alt="{{ $accessory->name }}"
-                                class="w-full h-64 object-cover object-top" loading="lazy">
+                                class="w-full aspect-square bg-white object-cover object-top" loading="lazy">
                             <div class="p-4">
                                 <h3 class="text-lg text-white font-semibold">{{ $accessory->name }}</h3>
                                 <p class="text-gray-300">Accessory</p>

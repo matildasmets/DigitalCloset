@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Models\Clothing;
-use App\Models\Outfit;
+use App\Models\Outfits;
 
 class OutfitController extends Controller
 {
@@ -20,6 +20,46 @@ class OutfitController extends Controller
         Session::put('outfit', $attributes);
 
         return redirect('/put-outfit-together/top');
+    }
+
+    public function show($id)
+    {
+        $outfit = Outfits::where('user_id', Auth::id())->findOrFail($id);
+
+        $items = Clothing::whereIn('photo', [
+            $outfit->top,
+            $outfit->pants,
+            $outfit->shoes,
+            $outfit->jacket,
+            $outfit->accessories
+        ])->get()->keyBy('photo');
+
+        $details = [
+            'name' => $outfit->name,
+            'type' => $outfit->type,
+            'top' => [
+                'photo' => $outfit->top,
+                'name' => $items[$outfit->top]->name ?? null,
+            ],
+            'pants' => [
+                'photo' => $outfit->pants,
+                'name' => $items[$outfit->pants]->name ?? null,
+            ],
+            'shoes' => [
+                'photo' => $outfit->shoes,
+                'name' => $items[$outfit->shoes]->name ?? null,
+            ],
+            'jacket' => [
+                'photo' => $outfit->jacket,
+                'name' => $items[$outfit->jacket]->name ?? null,
+            ],
+            'accessories' => [
+                'photo' => $outfit->accessories,
+                'name' => $items[$outfit->accessories]->name ?? null,
+            ],
+        ];
+
+        return view('outfit.show', ['outfit' => $details]);
     }
 
     public function top()
@@ -160,19 +200,23 @@ class OutfitController extends Controller
             $outfit['accessory'] ?? null,
         ]);
 
-        $items = Clothing::whereIn('id', $ids)->get()->keyBy('id');
+        try {
+            $items = Clothing::whereIn('id', $ids)->get()->keyBy('id');
 
-        $newOutfit = new Outfit();
-        $newOutfit->user_id = Auth::id();
-        $newOutfit->name = $outfit['name'];
-        $newOutfit->type = $outfit['occasion'];
-        $newOutfit->top = $items[$outfit['top']]->photo ?? null;
-        $newOutfit->pants = $items[$outfit['pants']]->photo ?? null;
-        $newOutfit->shoes = $items[$outfit['shoes']]->photo ?? null;
-        $newOutfit->jacket = isset($outfit['jacket']) ? $items[$outfit['jacket']]->photo : null;
-        $newOutfit->accessories = isset($outfit['accessory']) ? $items[$outfit['accessory']]->photo : null;
+            $newOutfit = new Outfits();
+            $newOutfit->user_id = Auth::id();
+            $newOutfit->name = $outfit['name'];
+            $newOutfit->type = $outfit['occasion'];
+            $newOutfit->top = $items[$outfit['top']]->photo ?? null;
+            $newOutfit->pants = $items[$outfit['pants']]->photo ?? null;
+            $newOutfit->shoes = $items[$outfit['shoes']]->photo ?? null;
+            $newOutfit->jacket = isset($outfit['jacket']) ? $items[$outfit['jacket']]->photo : null;
+            $newOutfit->accessories = isset($outfit['accessory']) ? $items[$outfit['accessory']]->photo : null;
 
-        $newOutfit->save();
+            $newOutfit->save();
+        } catch(\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Something went wrong while saving the outfit.']);
+        }
 
         return redirect('/dashboard')->with('success', 'Outfit added successfully!');
     }

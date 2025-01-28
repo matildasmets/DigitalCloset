@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use App\Models\Clothing;
+use App\Models\Outfits;
 
 class MainController extends Controller
 {
@@ -18,7 +17,8 @@ class MainController extends Controller
     public function closet()
     {
         $clothing = Clothing::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->get();
-        return view('closet', ['clothing' => $clothing]);
+        $outfits = Outfits::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->get();
+        return view('closet', ['clothing' => $clothing, 'outfits' => $outfits]);
     }
 
     public function random()

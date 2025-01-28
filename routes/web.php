@@ -22,6 +22,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [MainController::class, 'index']);
     Route::get('/closet', [MainController::class, 'closet']);
     Route::get('/random', [MainController::class, 'random']);
+    Route::get('/outfit/{id}', [OutfitController::class, 'show']);
 
     Route::post('/dashboard/put-outfit-together', [OutfitController::class, 'create']);
 

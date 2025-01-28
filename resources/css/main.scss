@@ -3,42 +3,47 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Helvetica Regular';
-    src:  url('../fonts/helvetica-regular-webfont.woff2') format('woff2'),
-          url('../fonts/helvetica-regular-webfont.woff') format('woff');
+    font-family: "Helvetica Regular";
+    src: url("../fonts/helvetica-regular-webfont.woff2") format("woff2"),
+        url("../fonts/helvetica-regular-webfont.woff") format("woff");
 }
 
 @font-face {
-    font-family: 'Helvetica Pixel';
-    src:  url('../fonts/helvetica-pixel-webfont.woff2') format('woff2'),
-          url('../fonts/helvetica-pixel-webfont.woff') format('woff');
+    font-family: "Helvetica Pixel";
+    src: url("../fonts/helvetica-pixel-webfont.woff2") format("woff2"),
+        url("../fonts/helvetica-pixel-webfont.woff") format("woff");
 }
 
 @font-face {
-    font-family: 'Helvetica Extended';
-    src:  url('../fonts/helvetica-extended-webfont.woff2') format('woff2'),
-          url('../fonts/helvetica-extended-webfont.woff') format('woff');
+    font-family: "Helvetica Extended";
+    src: url("../fonts/helvetica-extended-webfont.woff2") format("woff2"),
+        url("../fonts/helvetica-extended-webfont.woff") format("woff");
 }
 
 .helvetica-regular {
-    font-family: 'Helvetica Regular', sans-serif;
+    font-family: "Helvetica Regular", sans-serif;
 }
 
 .helvetica-pixel {
-    font-family: 'Helvetica Pixel', sans-serif;
+    font-family: "Helvetica Pixel", sans-serif;
 }
 
 .helvetica-extended {
-    font-family: 'Helvetica Extended', sans-serif;
+    font-family: "Helvetica Extended", sans-serif;
 }
 
-h1,h2,h3,h4,h5,h6 {
-    font-family: 'Helvetica Extended', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Helvetica Extended", sans-serif;
 }
 
 body {
     background-color: #fffff4;
-    font-family: 'Helvetica Regular', sans-serif;
+    font-family: "Helvetica Regular", sans-serif;
 }
 
 .bg-main {

@@ -1,6 +1,6 @@
 const mix = require('laravel-mix');
 
-mix.js("resources/js/**/*.js", "public/assets/js")
+mix.js("resources/js/main.js", "public/assets/js")
 .sass("resources/css/main.scss", "public/assets/css")
 .options({
     postCss: [require("tailwindcss")],

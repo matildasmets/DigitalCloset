@@ -18,7 +18,7 @@
                 <p class="mb-5">Here's what you could possibly wear:</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
                     @if ($top)
-                        <div class="bg-neutral-800 shadow-md overflow-hidden">
+                        <div class="block cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                             <img src="{{ asset('storage/' . $top->photo) }}" alt="{{ $top->name }}"
                                 class="w-full h-64 object-cover object-top" loading="lazy">
                             <div class="p-4">
@@ -29,7 +29,7 @@
                     @endif
 
                     @if ($pants)
-                        <div class="bg-neutral-800 shadow-md overflow-hidden">
+                        <div class="block cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                             <img src="{{ asset('storage/' . $pants->photo) }}" alt="{{ $pants->name }}"
                                 class="w-full h-64 object-cover object-top" loading="lazy">
                             <div class="p-4">
@@ -40,7 +40,7 @@
                     @endif
 
                     @if ($shoes)
-                        <div class="bg-neutral-800 shadow-md overflow-hidden">
+                        <div class="block cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                             <img src="{{ asset('storage/' . $shoes->photo) }}" alt="{{ $shoes->name }}"
                                 class="w-full h-64 object-cover object-top" loading="lazy">
                             <div class="p-4">
@@ -51,7 +51,7 @@
                     @endif
 
                     @if ($jacket)
-                        <div class="bg-neutral-800 shadow-md overflow-hidden">
+                        <div class="block cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                             <img src="{{ asset('storage/' . $jacket->photo) }}" alt="{{ $jacket->name }}"
                                 class="w-full h-64 object-cover object-top" loading="lazy">
                             <div class="p-4">
@@ -62,7 +62,7 @@
                     @endif
 
                     @if ($accessory)
-                        <div class="bg-neutral-800 shadow-md overflow-hidden">
+                        <div class="block cursor-pointer rounded-lg bg-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                             <img src="{{ asset('storage/' . $accessory->photo) }}" alt="{{ $accessory->name }}"
                                 class="w-full h-64 object-cover object-top" loading="lazy">
                             <div class="p-4">

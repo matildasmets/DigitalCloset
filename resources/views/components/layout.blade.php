@@ -51,7 +51,7 @@
 
     {{ $slot }}
 
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/preline.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/preline.js') }}"></script>
 </body>
 </html>

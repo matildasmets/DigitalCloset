@@ -131,7 +131,7 @@
                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
                             <input type="text" name="name" id="name"
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-800 dark:border-neutral-700 dark:placeholder-neutral-400 dark:text-white sm:text-sm"
-                                placeholder="Ex. Red ribbed sweater" required>
+                                placeholder="Ex. Red winter outfit" required>
                         </div>
                         <div class="mb-4">
                             <label for="name"
@@ -149,10 +149,10 @@
                     </form>
                 </div>
                 <div class="flex justify-end items-center gap-x-2 py-3 px-4 border-t dark:border-neutral-700">
-                    <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" data-hs-overlay="#hs-basic-modal">
+                    <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" aria-label="Close" data-hs-overlay="#hs-put-outfit-together-modal">
                         Close
                     </button>
-                    <button type="submit" form="hs-add-top-form"
+                    <button type="submit" form="hs-put-outfit-together-form"
                         class="transition-all py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-white text-black hover:bg-white/95 focus:outline-none focus:bg-white/95 disabled:opacity-50 disabled:pointer-events-none">
                         Get started
                     </button>

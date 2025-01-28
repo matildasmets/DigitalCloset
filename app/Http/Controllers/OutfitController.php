@@ -3,143 +3,64 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Clothing;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use App\Models\Clothing;
 
 class OutfitController extends Controller
 {
+    public function create(Request $request)
+    {
+        $attributes = $request->validate([
+            'name' => 'required|min:3',
+            'occasion' => 'required',
+        ]);
+
+        Session::put('outfit', $attributes);
+
+        return redirect('/put-outfit-together/top');
+    }
+
+    public function top()
+    {
+        $tops = Clothing::where('user_id', Auth::id())->where('type', 'top')->get();
+        return view('outfit.top', ['tops' => $tops]);
+    }
+
+    public function pants()
+    {
+        $pants = Clothing::where('user_id', Auth::id())->where('type', 'pants')->get();
+        return view('outfit.pants', ['pants' => $pants]);
+    }
+
+    public function shoes()
+    {
+        $shoes = Clothing::where('user_id', Auth::id())->where('type', 'shoes')->get();
+        return view('outfit.shoes', ['shoes' => $shoes]);
+    }
+
+    public function jacket()
+    {
+        $jacket = Clothing::where('user_id', Auth::id())->where('type', 'jacket')->get();
+        return view('outfit.jacket', ['jacket' => $jacket]);
+    }
+
+    public function accessory()
+    {
+        $accessory = Clothing::where('user_id', Auth::id())->where('type', 'accessory')->get();
+        return view('outfit.accessory', ['accessory' => $accessory]);
+    }
+
     public function addTop(Request $request)
     {
-        $request->validate([
-            'photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'name' => 'required|string|max:255',
+        $attributes = $request->validate([
+            'top' => 'required',
         ]);
 
-        $clothing = new Clothing();
-        $clothing->user_id = Auth::id();
-        $clothing->name = $request->name;
-        $clothing->type = 'top';
+        $outfit = Session::get('outfit', []);
+        $outfit['top'] = $attributes['top'];
+        Session::put('outfit', $outfit);
 
-        if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-
-            $fileName = $clothing->user_id . '_' . time() . '.' . $file->getClientOriginalExtension();
-
-            $filePath = $file->storeAs('tops', $fileName, 'public');
-
-            $clothing->photo = $filePath;
-        }
-
-        $clothing->save();
-
-        return redirect('/dashboard')->with('success', 'Top added successfully!');
-    }
-
-    public function addPants(Request $request)
-    {
-        $request->validate([
-            'photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'name' => 'required|string|max:255',
-        ]);
-
-        $clothing = new Clothing();
-        $clothing->user_id = Auth::id();
-        $clothing->name = $request->name;
-        $clothing->type = 'pants';
-
-        if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-
-            $fileName = $clothing->user_id . '_' . time() . '.' . $file->getClientOriginalExtension();
-
-            $filePath = $file->storeAs('pants', $fileName, 'public');
-
-            $clothing->photo = $filePath;
-        }
-
-        $clothing->save();
-
-        return redirect('/dashboard')->with('success', 'Pants added successfully!');
-    }
-
-    public function addShoes(Request $request)
-    {
-        $request->validate([
-            'photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'name' => 'required|string|max:255',
-        ]);
-
-        $clothing = new Clothing();
-        $clothing->user_id = Auth::id();
-        $clothing->name = $request->name;
-        $clothing->type = 'shoes';
-
-        if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-
-            $fileName = $clothing->user_id . '_' . time() . '.' . $file->getClientOriginalExtension();
-
-            $filePath = $file->storeAs('shoes', $fileName, 'public');
-
-            $clothing->photo = $filePath;
-        }
-
-        $clothing->save();
-
-        return redirect('/dashboard')->with('success', 'Shoes added successfully!');
-    }
-
-    public function addJacket(Request $request)
-    {
-        $request->validate([
-            'photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'name' => 'required|string|max:255',
-        ]);
-
-        $clothing = new Clothing();
-        $clothing->user_id = Auth::id();
-        $clothing->name = $request->name;
-        $clothing->type = 'jacket';
-
-        if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-
-            $fileName = $clothing->user_id . '_' . time() . '.' . $file->getClientOriginalExtension();
-
-            $filePath = $file->storeAs('jackets', $fileName, 'public');
-
-            $clothing->photo = $filePath;
-        }
-
-        $clothing->save();
-
-        return redirect('/dashboard')->with('success', 'Jacket added successfully!');
-    }
-
-    public function addAccessory(Request $request)
-    {
-        $request->validate([
-            'photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'name' => 'required|string|max:255',
-        ]);
-
-        $clothing = new Clothing();
-        $clothing->user_id = Auth::id();
-        $clothing->name = $request->name;
-        $clothing->type = 'accessory';
-
-        if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-
-            $fileName = $clothing->user_id . '_' . time() . '.' . $file->getClientOriginalExtension();
-
-            $filePath = $file->storeAs('accessories', $fileName, 'public');
-
-            $clothing->photo = $filePath;
-        }
-
-        $clothing->save();
-
-        return redirect('/dashboard')->with('success', 'Accessory added successfully!');
+        return redirect('/put-outfit-together/pants');
     }
 }

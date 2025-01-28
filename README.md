@@ -26,6 +26,7 @@
    docker run --rm -v %cd%:/app composer require laravel/sail --dev
    ```
 
+   En voer hierna dit commando uit:
    ```bash
    ./vendor/bin/sail up --build
    ```

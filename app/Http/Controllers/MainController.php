@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use App\Models\Clothing;
 use App\Models\Outfits;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
     public function index()
     {
         $clothing = Clothing::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->limit(4)->get();
+
         return view('dashboard', ['clothing' => $clothing]);
     }
 
@@ -18,6 +19,7 @@ class MainController extends Controller
     {
         $clothing = Clothing::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->get();
         $outfits = Outfits::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->get();
+
         return view('closet', ['clothing' => $clothing, 'outfits' => $outfits]);
     }
 

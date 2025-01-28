@@ -1,13 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MainController;
 use App\Http\Controllers\ClothingController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\OutfitController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SessionController;
-use App\Http\Middleware\Guest;
 use App\Http\Middleware\CheckOutfit;
+use App\Http\Middleware\Guest;
+use Illuminate\Support\Facades\Route;
 
 Route::middleware([Guest::class])->group(function () {
     Route::view('/', 'signin');

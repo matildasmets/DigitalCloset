@@ -15,10 +15,10 @@ class CheckOutfit
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!session()->has('outfit')) {
+        if (! session()->has('outfit')) {
             return redirect('/dashboard');
         }
-        
+
         return $next($request);
     }
 }

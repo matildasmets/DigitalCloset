@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Clothing;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ClothingController extends Controller
@@ -15,7 +15,7 @@ class ClothingController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
-        $clothing = new Clothing();
+        $clothing = new Clothing;
         $clothing->user_id = Auth::id();
         $clothing->name = $request->name;
         $clothing->type = 'top';
@@ -23,7 +23,7 @@ class ClothingController extends Controller
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
 
-            $fileName = $clothing->user_id . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $fileName = $clothing->user_id.'_'.time().'.'.$file->getClientOriginalExtension();
 
             $filePath = $file->storeAs('tops', $fileName, 'public');
 
@@ -42,7 +42,7 @@ class ClothingController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
-        $clothing = new Clothing();
+        $clothing = new Clothing;
         $clothing->user_id = Auth::id();
         $clothing->name = $request->name;
         $clothing->type = 'pants';
@@ -50,7 +50,7 @@ class ClothingController extends Controller
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
 
-            $fileName = $clothing->user_id . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $fileName = $clothing->user_id.'_'.time().'.'.$file->getClientOriginalExtension();
 
             $filePath = $file->storeAs('pants', $fileName, 'public');
 
@@ -69,7 +69,7 @@ class ClothingController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
-        $clothing = new Clothing();
+        $clothing = new Clothing;
         $clothing->user_id = Auth::id();
         $clothing->name = $request->name;
         $clothing->type = 'shoes';
@@ -77,7 +77,7 @@ class ClothingController extends Controller
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
 
-            $fileName = $clothing->user_id . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $fileName = $clothing->user_id.'_'.time().'.'.$file->getClientOriginalExtension();
 
             $filePath = $file->storeAs('shoes', $fileName, 'public');
 
@@ -96,7 +96,7 @@ class ClothingController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
-        $clothing = new Clothing();
+        $clothing = new Clothing;
         $clothing->user_id = Auth::id();
         $clothing->name = $request->name;
         $clothing->type = 'jacket';
@@ -104,7 +104,7 @@ class ClothingController extends Controller
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
 
-            $fileName = $clothing->user_id . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $fileName = $clothing->user_id.'_'.time().'.'.$file->getClientOriginalExtension();
 
             $filePath = $file->storeAs('jackets', $fileName, 'public');
 
@@ -123,7 +123,7 @@ class ClothingController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
-        $clothing = new Clothing();
+        $clothing = new Clothing;
         $clothing->user_id = Auth::id();
         $clothing->name = $request->name;
         $clothing->type = 'accessory';
@@ -131,7 +131,7 @@ class ClothingController extends Controller
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
 
-            $fileName = $clothing->user_id . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $fileName = $clothing->user_id.'_'.time().'.'.$file->getClientOriginalExtension();
 
             $filePath = $file->storeAs('accessories', $fileName, 'public');
 

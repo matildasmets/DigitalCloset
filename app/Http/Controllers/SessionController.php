@@ -11,7 +11,7 @@ class SessionController extends Controller
     {
         $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:8'
+            'password' => 'required|min:8',
         ]);
 
         if (Auth::attempt($credentials, true)) {

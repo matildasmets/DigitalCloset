@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 
 class RegistrationController extends Controller
 {
@@ -22,9 +22,9 @@ class RegistrationController extends Controller
                 'regex:/[a-z]/',
                 'regex:/[A-Z]/',
                 'regex:/[0-9]/',
-                'regex:/[@$!%*?&#]/'
+                'regex:/[@$!%*?&#]/',
             ],
-            'repeat_password' => 'required|same:password'
+            'repeat_password' => 'required|same:password',
         ], [
             'first_name.required' => 'The first name is required.',
             'last_name.required' => 'The last name is required.',

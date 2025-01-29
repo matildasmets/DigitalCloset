@@ -31,7 +31,7 @@
                                         <img src="{{ asset('storage/' . $item->shoes) }}" alt="Shoes" class="w-full h-full object-cover bg-white" loading="lazy">
                                     @endif
                                     @if ($item->jacket && $item->accessories)
-                                        <div class="grid grid-cols-2 gap-1">
+                                        <div class="grid grid-cols-2">
                                             <img src="{{ asset('storage/' . $item->jacket) }}" alt="Jacket" class="w-full h-full object-cover bg-white" loading="lazy">
                                             <img src="{{ asset('storage/' . $item->accessories) }}" alt="Accessories" class="w-full h-full object-cover  bg-white" loading="lazy">
                                         </div>

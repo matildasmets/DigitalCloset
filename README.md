@@ -18,12 +18,17 @@
 
    **MacOs/Linux:**
     ```bash
-    docker run --rm -v $(pwd):/app composer require laravel/sail --dev
+    docker run --rm -v $(pwd):/app composer install
     ```
 
    **Windows:**
    ```bash
-   docker run --rm -v %cd%:/app composer require laravel/sail --dev
+   docker run --rm -v %cd%:/app composer install
+   ```
+
+   Als je al PHP en Composer op je systeem hebt staan kun je dit commando runnen:
+   ```bash
+   composer install
    ```
    
    **Creëer een .env-bestand**
